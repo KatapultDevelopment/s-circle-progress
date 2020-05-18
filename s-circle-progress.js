@@ -1,17 +1,23 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
-
-<!--
+/**
 `s-circle-progress`
 Polymer-based web component displaying a circular progress bar.
 
 @demo demo/index.html
--->
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
 
-<dom-module id="s-circle-progress">
-<template>
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 
+Polymer({
+  _template: html`
 <style>
 
 :host {
@@ -53,33 +59,17 @@ slot::slotted(*) {
 </style>
 
 <svg id="circle" width="100%" height="100%">
-  <circle class="Circle-background"
-      r$="[[_radius]]"
-      cx$="[[_cx]]"
-      cy$="[[_cy]]"
-      fill="transparent"
-      stroke-width$="[[strokeWidth]]" />
-  <circle class="Circle-foreground"
-      r$="[[_radius]]"
-      cx$="[[_cx]]"
-      cy$="[[_cy]]"
-      fill="transparent"
-      stroke-width$="[[strokeWidth]]"
-      stroke-dasharray$="[[_dasharray]]"
-      stroke-dashoffset$="[[_dashoffset]]"
-      transform$="[[_transform]]" />
+  <circle class="Circle-background" r\$="[[_radius]]" cx\$="[[_cx]]" cy\$="[[_cy]]" fill="transparent" stroke-width\$="[[strokeWidth]]"></circle>
+  <circle class="Circle-foreground" r\$="[[_radius]]" cx\$="[[_cx]]" cy\$="[[_cy]]" fill="transparent" stroke-width\$="[[strokeWidth]]" stroke-dasharray\$="[[_dasharray]]" stroke-dashoffset\$="[[_dashoffset]]" transform\$="[[_transform]]"></circle>
 </svg>
 
 <slot></slot>
+`,
 
-</template>
-<script>
-
-Polymer({
   is: 's-circle-progress',
 
   behaviors: [
-    Polymer.IronResizableBehavior
+    IronResizableBehavior
   ],
 
   properties: {
@@ -178,6 +168,3 @@ Polymer({
     }
   }
 });
-
-</script>
-</dom-module>
